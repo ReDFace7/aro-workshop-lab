@@ -30,6 +30,7 @@ pipeline {
                     -Dquarkus.container-image.additional-tags=latest \
                     -Dquarkus.container-image.push=true
                 '''
+
             }
         }
     }
