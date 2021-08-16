@@ -33,6 +33,18 @@ pipeline {
 
             }
         }
+        stage('Deploy to TEST') {
+            when { not { branch "main" } }
+
+            steps {
+                sh """
+                    oc set image deployment home-automation \
+                    home-automation=quay.io/${QUAY_USR}/aro-workshop-lab:build-${BUILD_NUMBER} \
+                     -n aro-lab-test --record
+                """
+            }
+        } 
+
     }
 }
 
